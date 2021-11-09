@@ -5,6 +5,8 @@ import 'package:loginfirmad/src/preferencias_usuario/preferencias_usuario.dart';
 class UsuarioProvider {
   final String _firebaseToken = 'AIzaSyDdSIWuUcYlxCC2hiquQcCaK5SK8NTbSY4';
   final _prefs = new PreferenciasUsuario();
+  final String _url =
+      'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=\$_firebaseToken';
 
   Future<Map<String, dynamic>> login(String email, String password) async {
     final authData = {
@@ -13,8 +15,12 @@ class UsuarioProvider {
       'returnSecureToken': true
     };
 
+    // final resp2 = await Uri.post('',body: json.encode(authData));
+    // final resp = await http.post(url: _urlBase + '')
+
     final resp = await http.post(
-        'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=$_firebaseToken',
+        Uri.parse(
+            'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=$_firebaseToken'),
         body: json.encode(authData));
 
     Map<String, dynamic> decodedResp = json.decode(resp.body);
@@ -37,9 +43,9 @@ class UsuarioProvider {
       'password': password,
       'returnSecureToken': true
     };
-
     final resp = await http.post(
-        'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=$_firebaseToken',
+        Uri.parse(
+            'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=$_firebaseToken'),
         body: json.encode(authData));
 
     Map<String, dynamic> decodedResp = json.decode(resp.body);

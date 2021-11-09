@@ -54,7 +54,7 @@ class RegistroPage extends StatelessWidget {
               ],
             ),
           ),
-          FlatButton(
+          TextButton(
             child: Text('Ya tienes cuenta? Login'),
             onPressed: () => Navigator.pushReplacementNamed(context, 'login'),
           ),
@@ -113,18 +113,27 @@ class RegistroPage extends StatelessWidget {
     return StreamBuilder(
       stream: bloc.formValidStream,
       builder: (BuildContext context, AsyncSnapshot snapshot) {
-        return RaisedButton(
+        return ElevatedButton(
             child: Container(
               padding: EdgeInsets.symmetric(horizontal: 80.0, vertical: 15.0),
-              child: Text('Registrar'),
+              child: Text('Registrar', style: TextStyle(color: Colors.white)),
+              decoration: BoxDecoration(color: Colors.deepOrange),
             ),
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(5.0)),
-            elevation: 0.0,
-            color: Colors.deepPurple,
-            textColor: Colors.white,
             onPressed:
                 snapshot.hasData ? () => _register(bloc, context) : null);
+
+        // RaisedButton(
+        //     child: Container(
+        //       padding: EdgeInsets.symmetric(horizontal: 80.0, vertical: 15.0),
+        //       child: Text('Registrar'),
+        //     ),
+        //     shape: RoundedRectangleBorder(
+        //         borderRadius: BorderRadius.circular(5.0)),
+        //     elevation: 0.0,
+        //     color: Colors.deepPurple,
+        //     textColor: Colors.white,
+        //     onPressed:
+        //         snapshot.hasData ? () => _register(bloc, context) : null);
       },
     );
   }

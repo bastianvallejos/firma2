@@ -58,7 +58,7 @@ class LoginPage extends StatelessWidget {
               ],
             ),
           ),
-          FlatButton(
+          TextButton(
             child: Text('crear una nueva cuenta'),
             onPressed: () =>
                 Navigator.pushReplacementNamed(context, 'registro'),
@@ -118,17 +118,28 @@ class LoginPage extends StatelessWidget {
     return StreamBuilder(
       stream: bloc.formValidStream,
       builder: (BuildContext context, AsyncSnapshot snapshot) {
-        return RaisedButton(
-            child: Container(
-              padding: EdgeInsets.symmetric(horizontal: 80.0, vertical: 15.0),
-              child: Text('Ingresar'),
+        return ElevatedButton(
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(5.0),
+              child: Container(
+                padding: EdgeInsets.symmetric(horizontal: 80.0, vertical: 15.0),
+                child: Text('Ingresar', style: TextStyle(color: Colors.white)),
+                decoration: BoxDecoration(color: Colors.blue[500]),
+              ),
             ),
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(5.0)),
-            elevation: 0.0,
-            color: Colors.deepPurple,
-            textColor: Colors.white,
             onPressed: snapshot.hasData ? () => _login(bloc, context) : null);
+
+        // RaisedButton(
+        //     child: Container(
+        //       padding: EdgeInsets.symmetric(horizontal: 80.0, vertical: 15.0),
+        //       child: Text('Ingresar'),
+        //     ),
+        //     shape: RoundedRectangleBorder(
+        //         borderRadius: BorderRadius.circular(5.0)),
+        //     elevation: 0.0,
+        //     color: Colors.deepPurple,
+        //     textColor: Colors.white,
+        //     onPressed: snapshot.hasData ? () => _login(bloc, context) : null);
       },
     );
   }
@@ -136,7 +147,7 @@ class LoginPage extends StatelessWidget {
   _login(LoginBloc bloc, BuildContext context) {
     usuarioProvider.login(bloc.email, bloc.password);
 
-    Navigator.pushReplacementNamed(context, 'home');
+    Navigator.pushReplacementNamed(context, 'newHome');
   }
 
   Widget _crearFondo(BuildContext context) {
@@ -146,10 +157,8 @@ class LoginPage extends StatelessWidget {
       height: size.height * 0.4,
       width: double.infinity,
       decoration: BoxDecoration(
-          gradient: LinearGradient(colors: <Color>[
-        Color.fromRGBO(255, 128, 0, 1.0),
-        Color.fromRGBO(255, 128, 0, 1.0)
-      ])),
+        color: Colors.blue,
+      ),
     );
 
     final circulo = Container(

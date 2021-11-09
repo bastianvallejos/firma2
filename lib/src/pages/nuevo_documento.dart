@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:loginfirmad/src/pages/nueva_pagina.dart';
 
-class NuevoDocumento extends StatelessWidget {
+class EnviarDocumento extends StatelessWidget {
   @override
   @override
   Widget build(BuildContext context) {
@@ -23,69 +24,166 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
           title: Text('Enviar un nuevo documento'),
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back),
+            onPressed: () {
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (_) => NuevaPagina()));
+            },
+          ),
           backgroundColor: Colors.orange,
           actions: <Widget>[]),
-      body: Center(
-          child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          RaisedButton(
-            padding: EdgeInsets.symmetric(horizontal: 100.0, vertical: 10.0),
-            textColor: Colors.white,
-            color: Colors.deepOrange,
-            child: Text('Acta'),
-            onPressed: () {
-              Navigator.pushNamed(context, 'login');
-            },
+      body: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(top: 20),
+            child: _Body(
+              icon: Icons.ac_unit_sharp,
+              tituloBoton: 'adssda',
+            ),
           ),
-          RaisedButton(
-            textColor: Colors.white,
-            color: Colors.deepOrange,
-            padding: EdgeInsets.symmetric(horizontal: 80.0, vertical: 10.0),
-            child: Text('Certificado'),
-            onPressed: () {
-              Navigator.pushNamed(context, 'login');
-            },
+          Padding(
+            padding: const EdgeInsets.only(top: 20),
+            child: _Body(
+              icon: Icons.ac_unit_sharp,
+              tituloBoton: 'adssda',
+            ),
           ),
-          RaisedButton(
-            padding: EdgeInsets.symmetric(horizontal: 70.0, vertical: 10.0),
-            textColor: Colors.white,
-            color: Colors.deepOrange,
-            child: Text('Comprobante'),
-            onPressed: () {
-              Navigator.pushNamed(context, 'login');
-            },
-          ),
-          RaisedButton(
-            padding: EdgeInsets.symmetric(horizontal: 92.0, vertical: 10.0),
-            textColor: Colors.white,
-            color: Colors.deepOrange,
-            child: Text('Memo'),
-            onPressed: () {
-              Navigator.pushNamed(context, 'login');
-            },
-          ),
-          RaisedButton(
-            padding: EdgeInsets.symmetric(horizontal: 90.0, vertical: 10.0),
-            textColor: Colors.white,
-            color: Colors.deepOrange,
-            child: Text('Minuta'),
-            onPressed: () {
-              Navigator.pushNamed(context, 'login');
-            },
-          ),
-          RaisedButton(
-            padding: EdgeInsets.symmetric(horizontal: 60.0, vertical: 10.0),
-            textColor: Colors.white,
-            color: Colors.deepOrange,
-            child: Text('Orden de compra'),
-            onPressed: () {
-              Navigator.pushNamed(context, 'login');
-            },
+          Padding(
+            padding: const EdgeInsets.only(top: 20),
+            child: _Body(
+              icon: Icons.ac_unit_sharp,
+              tituloBoton: 'adssda',
+            ),
           ),
         ],
-      )),
+      ),
     );
   }
 }
+
+class _Body extends StatelessWidget {
+  final String tituloBoton;
+  final IconData icon;
+
+  const _Body({Key key, this.tituloBoton, this.icon}) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        SizedBox(width: 20),
+        GestureDetector(
+          onTap: () {
+            //TODO: Cambiar ruta
+            Navigator.push(
+                context, MaterialPageRoute(builder: (_) => NuevaPagina()));
+          },
+          child: Icon(this.icon),
+        ),
+        SizedBox(width: 10),
+        GestureDetector(
+          child: RichText(
+            textAlign: TextAlign.center,
+            overflow: TextOverflow.fade,
+            softWrap: false,
+            text: TextSpan(
+              children: [
+                TextSpan(
+                  text: '$tituloBoton',
+                  style: TextStyle(color: Colors.black),
+                ),
+              ],
+            ),
+          ),
+          onTap: () {
+            Navigator.push(
+                context, MaterialPageRoute(builder: (_) => NuevaPagina()));
+          },
+        ),
+      ],
+    );
+  }
+}
+
+
+//  Container(
+//         padding: EdgeInsets.only(top: 120),
+//         child: Center(
+//             child: Column(
+//           crossAxisAlignment: CrossAxisAlignment.center,
+//           children: <Widget>[
+//             ElevatedButton(
+//               child: Container(
+//                 padding: EdgeInsets.symmetric(horizontal: 80.0, vertical: 10.0),
+//                 child: Container(
+//                     child: Text('Acta', style: TextStyle(color: Colors.white))),
+//                 decoration: BoxDecoration(
+//                   color: Colors.deepOrange,
+//                 ),
+//               ),
+//               onPressed: () {},
+//             ),
+//             SizedBox(height: 10),
+//             ElevatedButton(
+//               child: Container(
+//                 padding: EdgeInsets.symmetric(horizontal: 80.0, vertical: 10.0),
+//                 child:
+//                     Text('Certificado', style: TextStyle(color: Colors.white)),
+//                 decoration: BoxDecoration(
+//                   color: Colors.deepOrange,
+//                 ),
+//               ),
+//               onPressed: () {},
+//             ),
+//             SizedBox(height: 10),
+//             ElevatedButton(
+//               child: Container(
+//                 padding: EdgeInsets.symmetric(horizontal: 80.0, vertical: 10.0),
+//                 child:
+//                     Text('Comprobante', style: TextStyle(color: Colors.white)),
+//                 decoration: BoxDecoration(
+//                   color: Colors.deepOrange,
+//                 ),
+//               ),
+//               onPressed: () {},
+//             ),
+//             SizedBox(height: 10),
+//             ElevatedButton(
+//               child: Container(
+//                 padding: EdgeInsets.symmetric(horizontal: 80.0, vertical: 10.0),
+//                 child: Text('Memos', style: TextStyle(color: Colors.white)),
+//                 decoration: BoxDecoration(
+//                   color: Colors.deepOrange,
+//                 ),
+//               ),
+//               onPressed: () {},
+//             ),
+//             SizedBox(height: 10),
+//             ElevatedButton(
+//               child: Container(
+//                 padding: EdgeInsets.symmetric(horizontal: 80.0, vertical: 10.0),
+//                 child: Text('Minutas', style: TextStyle(color: Colors.white)),
+//                 decoration: BoxDecoration(
+//                   color: Colors.deepOrange,
+//                 ),
+//               ),
+//               onPressed: () {},
+//             ),
+//             SizedBox(height: 10),
+//             ElevatedButton(
+//               child: Container(
+//                 padding: EdgeInsets.symmetric(horizontal: 80.0, vertical: 10.0),
+//                 child: Text('Orden de compra',
+//                     style: TextStyle(color: Colors.white)),
+//                 decoration: BoxDecoration(
+//                   color: Colors.deepOrange,
+//                 ),
+//               ),
+//               onPressed: () {},
+//             ),
+//             SizedBox(height: 10),
+//             SizedBox(height: 10),
+
+//           ],
+//         )),
+//       ),

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:loginfirmad/src/pages/nueva_pagina.dart';
 
 import 'nuevo_documento.dart';
 
 class HomePage extends StatelessWidget {
-  @override
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -31,34 +31,48 @@ class _MyHomePageState extends State<MyHomePage> {
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          RaisedButton(
+          Container(
             padding: EdgeInsets.symmetric(horizontal: 30.0, vertical: 15.0),
-            textColor: Colors.white,
-            color: Colors.deepOrange,
-            child: Text('Documentos Pendientes'),
-            onPressed: () {
-              Navigator.pushNamed(context, 'login');
-            },
+            decoration: BoxDecoration(
+              color: Colors.deepOrange,
+            ),
+            child: ElevatedButton(
+              child: Text('Documentos Pendientes',
+                  style: TextStyle(color: Colors.white)),
+              onPressed: () {
+                Navigator.pushNamed(context, 'login');
+              },
+            ),
           ),
-          RaisedButton(
+          SizedBox(height: 20),
+          Container(
             padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 15.0),
-            textColor: Colors.white,
-            color: Colors.deepOrange,
-            child: Text('Enviar un nuevo documento'),
-            onPressed: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => NuevoDocumento()));
-            },
+            decoration: BoxDecoration(
+              color: Colors.deepOrange,
+            ),
+            child: ElevatedButton(
+              child: Text('Enviar un nuevo documento'),
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => NuevaPagina()));
+
+                // Navigator.pushNamed(context, 'nueva_pagina');
+              },
+            ),
           ),
-          RaisedButton(
+          SizedBox(height: 20),
+          Container(
             padding: EdgeInsets.symmetric(horizontal: 80.0, vertical: 15.0),
-            textColor: Colors.white,
-            color: Colors.deepOrange,
-            child: Text('Mi perfil'),
-            onPressed: () {
-              Navigator.pushNamed(context, 'login');
-            },
-          )
+            decoration: BoxDecoration(
+              color: Colors.deepOrange,
+            ),
+            child: ElevatedButton(
+              child: Text('Mi perfil'),
+              onPressed: () {
+                //TODO: navegación a vista de perfil
+              },
+            ),
+          ),
         ],
       )
           //color: _color,

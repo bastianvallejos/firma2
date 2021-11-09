@@ -26,3 +26,21 @@ class Validator {
     }
   });
 }
+
+
+
+/// DATA : [
+///   
+///   usuarios: [
+///    email: "",
+///    nombre: "",
+///    apelliido: "",
+///    fechaNacimiento "", 
+/// ]
+/// 
+/// ]
+/// 
+/// 
+/// 
+/// 
+/// 
