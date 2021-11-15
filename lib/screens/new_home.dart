@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:six_flutter_project/screens/profile_screen.dart';
+import 'package:six_flutter_project/screens/login_screen.dart';
 
 class NuevaPagina extends StatelessWidget {
   static final String routeName = "nueva_pagina";
@@ -59,11 +60,21 @@ class MenuWidget extends StatelessWidget {
         ListTile(
           title: Text('Mi Perfil'),
           leading: Icon(
-            Icons.settings,
+            Icons.account_circle_sharp,
             color: Colors.blue,
           ),
           onTap: () {
             Navigator.pushNamed(context, ProfileScreen.routeName);
+          },
+        ),
+        ListTile(
+          title: Text('Cerrar sesion'),
+          leading: Icon(
+            Icons.arrow_back,
+            color: Colors.blue,
+          ),
+          onTap: () {
+            Navigator.pushNamed(context, LoginScreen.routeName);
           },
         ),
       ]),
